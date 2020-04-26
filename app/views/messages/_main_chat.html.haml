@@ -1,0 +1,28 @@
+.main
+  .main__group-info
+    .main__group-info__box
+      .main__group-info__box__name
+        test
+      .main__group-info__box__member
+        Member：
+        .main__group-info__box__member__list
+          kyosuke
+    = link_to "#", class: "main__group-info__edit-btn" do
+      Edit
+  .main__chat
+    .main__chat__messages
+      .main__chat__messages__list
+        .main__chat__messages__list__taker
+          kyosuke
+        .main__chat__messages__list__date
+          2020/04/25(sta) 16:00
+      .main__chat__messages__text
+        おはよう！
+  .main__form
+    %form.main__form__new-message
+      .main__form__new-message__input-box
+        %input.main__form__new-message__input-box__text{type: "text", placeholder: "type a message"}
+        %label.main__form__new-message__input-box__label{for: "message-image"}
+          = icon('far', 'image')
+          %input.main__form__new-message__input-box__label__file{type: "file", id: "message-image"}
+      %input.main__form__new-message__submit{type: "submit", value: "Send"}
