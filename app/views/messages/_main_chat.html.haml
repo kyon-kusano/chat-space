@@ -2,27 +2,23 @@
   .main__group-info
     .main__group-info__box
       .main__group-info__box__name
-        test
+        = @group.name
       .main__group-info__box__member
         Member：
         .main__group-info__box__member__list
-          kyosuke
-    = link_to "#", class: "main__group-info__edit-btn" do
+          - @group.group_users.each do |group_user|
+            = group_user.user.name
+    = link_to edit_group_path(@group), class: "main__group-info__edit-btn" do
       Edit
   .main__chat
-    .main__chat__messages
-      .main__chat__messages__list
-        .main__chat__messages__list__taker
-          kyosuke
-        .main__chat__messages__list__date
-          2020/04/25(sta) 16:00
-      .main__chat__messages__text
-        おはよう！
+    .messages
+      = render @messages
+
   .main__form
-    %form.main__form__new-message
+    = form_for [@group,@message] do |f|
+      = f.text_field :content, class: 'main__form__new-message__text',placeholder: "type a message"
       .main__form__new-message__input-box
-        %input.main__form__new-message__input-box__text{type: "text", placeholder: "type a message"}
-        %label.main__form__new-message__input-box__label{for: "message-image"}
+        = f.label :image, class: 'main__form__new-message__input-box__label' do
           = icon('far', 'image')
-          %input.main__form__new-message__input-box__label__file{type: "file", id: "message-image"}
-      %input.main__form__new-message__submit{type: "submit", value: "Send"}
+          =f.file_field :image, class: 'main__form__new-message__input-box__label__file'
+      = f.submit 'Send', class:'main__form__new-message__submit'
