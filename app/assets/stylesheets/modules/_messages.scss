@@ -41,16 +41,19 @@
         &__list{
           width: 260px;
           margin-bottom: 40px;
-          &__name{
-            font-size: 15px;
-            color: $white;
-            font-weight: bold;
-            margin-bottom: 5px;
-          }
-          &__message{
-            font-size: 11px;
-            color: $white;
-            font-weight: bold;
+          a {
+            text-decoration-line: none;
+            .side-group__list__name{
+              font-size: 15px;
+              color: $white;
+              font-weight: bold;
+              margin-bottom: 5px;
+            }
+            .side-group__list__message{
+              font-size: 11px;
+              color: $white;
+              font-weight: bold;
+            }
           }
         }
       }
